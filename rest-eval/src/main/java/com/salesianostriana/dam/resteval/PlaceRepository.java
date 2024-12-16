@@ -14,9 +14,28 @@ public class PlaceRepository {
     private HashMap<Long, Place> places = new HashMap<>();
     private AtomicLong counter = new AtomicLong(0);
 
-    @PostConstruct
+  @PostConstruct
     public void init() {
-        // Añadir aquí datos de ejemplo
+
+        places.put(1L,  (Place.builder().id(1L)
+                        .name("tasca")
+                        .address("triana1")
+                        .desc("Un bar BBB")
+                        .coords("1a 2b")
+                        .image("Foto muy bonita")
+                .tags(List.of("tag1","tag2","tag3"))
+                        .build())
+
+        );
+        /*
+        2L,  (Place.builder().id(2L)
+                .name("mcdonald")
+                .address("mairena")
+                .desc("caro y malo")
+                .coords("2a 4b")
+                .image("parapapapa").build()));*/
+
+
     }
 
     public Place add(Place place) {
@@ -31,6 +50,7 @@ public class PlaceRepository {
     }
 
     public List<Place> getAll() {
+
         return List.copyOf(places.values());
     }
 
